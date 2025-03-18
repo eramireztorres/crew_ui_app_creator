@@ -77,7 +77,22 @@ col1, col2 = st.columns([3, 1])  # Adjust the ratio as needed
 # Left Column: Application description, launch button, downloads
 with col1:
     st.header("Application Settings")
-    app_description = st.text_area("App Description")
+    default_description = (
+        "Develop a file transfer application using SCP that allows transferring files between a local folder and a remote folder. \n\n"
+        "1. Select Folders:\n"
+        "   - Choose a local folder and a remote folder.\n\n"
+        "2. Bidirectional Transfers:\n"
+        "   - Choose the transfer direction: either copy/move files from local to remote or from remote to local.\n\n"
+        "3. Remote Connection Settings:\n"
+        "   - Default connection is 'some-user@some-server.es', but the user can change it.\n\n"
+        "4. File Pattern Matching:\n"
+        "   - Provide an input (default '*.*') for file patterns (e.g., '*.csv', 'model*.*') to filter files for transfer.\n\n"
+        "5. Password Management:\n"
+        "   - Request the remote password only once per session and cache it for subsequent transfers.\n\n"
+        "6. User Feedback:\n"
+        "   - Display progress indicators, error messages, and a summary after operations complete."
+    )
+    app_description = st.text_area("App Description", value=default_description, height=544)
     ui_preference = st.selectbox("UI Preference", ["CLI", "Tkinter", "Streamlit"])
     
     if st.button("Execute Crew"):
@@ -129,27 +144,52 @@ with col1:
 with col2:
     st.header("Agent Model & Provider Settings")
     
+    # # Skeleton Generator
+    # st.text("Skeleton Generator")
+    # skeleton_generator_model = st.text_input("Model", "gpt-4o-mini", key="skeleton_generator_model")
+    # skeleton_generator_provider = infer_provider(skeleton_generator_model)
+    # st.text_input("Provider", value=skeleton_generator_provider, key="skeleton_generator_provider", disabled=True)
+    
+    # # Skeleton Reviewer
+    # st.text("Skeleton Reviewer")
+    # skeleton_reviewer_model = st.text_input("Model", "gpt-4o-mini", key="skeleton_reviewer_model")
+    # skeleton_reviewer_provider = infer_provider(skeleton_reviewer_model)
+    # st.text_input("Provider", value=skeleton_reviewer_provider, key="skeleton_reviewer_provider", disabled=True)
+    
+    # # UI Generator
+    # st.text("UI Generator")
+    # ui_generator_model = st.text_input("Model", "gpt-4o-mini", key="ui_generator_model")
+    # ui_generator_provider = infer_provider(ui_generator_model)
+    # st.text_input("Provider", value=ui_generator_provider, key="ui_generator_provider", disabled=True)
+    
+    # # UI Reviewer
+    # st.text("UI Reviewer")
+    # ui_reviewer_model = st.text_input("Model", "gpt-4o-mini", key="ui_reviewer_model")
+    # ui_reviewer_provider = infer_provider(ui_reviewer_model)
+    # st.text_input("Provider", value=ui_reviewer_provider, key="ui_reviewer_provider", disabled=True)
+    
     # Skeleton Generator
     st.text("Skeleton Generator")
-    skeleton_generator_model = st.text_input("Model", "gpt-4o-mini", key="skeleton_generator_model")
+    skeleton_generator_model = st.text_input("Model", "google/gemini-2.0-flash-exp:free", key="skeleton_generator_model")
     skeleton_generator_provider = infer_provider(skeleton_generator_model)
     st.text_input("Provider", value=skeleton_generator_provider, key="skeleton_generator_provider", disabled=True)
     
     # Skeleton Reviewer
     st.text("Skeleton Reviewer")
-    skeleton_reviewer_model = st.text_input("Model", "gpt-4o-mini", key="skeleton_reviewer_model")
+    skeleton_reviewer_model = st.text_input("Model", "google/gemini-2.0-flash-exp:free", key="skeleton_reviewer_model")
     skeleton_reviewer_provider = infer_provider(skeleton_reviewer_model)
     st.text_input("Provider", value=skeleton_reviewer_provider, key="skeleton_reviewer_provider", disabled=True)
     
     # UI Generator
     st.text("UI Generator")
-    ui_generator_model = st.text_input("Model", "gpt-4o-mini", key="ui_generator_model")
+    ui_generator_model = st.text_input("Model", "google/gemini-2.0-flash-exp:free", key="ui_generator_model")
     ui_generator_provider = infer_provider(ui_generator_model)
     st.text_input("Provider", value=ui_generator_provider, key="ui_generator_provider", disabled=True)
     
     # UI Reviewer
     st.text("UI Reviewer")
-    ui_reviewer_model = st.text_input("Model", "gpt-4o-mini", key="ui_reviewer_model")
+    ui_reviewer_model = st.text_input("Model", "google/gemini-2.0-flash-exp:free", key="ui_reviewer_model")
     ui_reviewer_provider = infer_provider(ui_reviewer_model)
     st.text_input("Provider", value=ui_reviewer_provider, key="ui_reviewer_provider", disabled=True)
+
 
