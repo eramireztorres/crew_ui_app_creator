@@ -1,4 +1,4 @@
-# crew_ui_app_creator
+# Crew UI-app creator
 An interactive application that leverages CrewAI multi-agent framework to generate and optimize simple UI python apps.
 
 ## Installation
