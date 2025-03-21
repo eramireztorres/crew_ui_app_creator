@@ -28,7 +28,11 @@ python_code_reviewer = Agent(
 # Specialized UI Developer Agents for each UI type
 ui_developer_cli = Agent(
     role="CLI UI Developer",
-    goal="Develop a command-line interface that meets the requirements for {app_description}.",
+    goal=(
+        "Develop a command-line interface that meets the requirements for {app_description}."
+    "The generated UI code must import the core business logic from 'skeleton_code' (e.g., 'from skeleton_code import ...') "
+    "and should not contain any duplicate business logic."
+    ),
     backstory="Generate a text-based UI following best CLI practices.",
     verbose=True,
     allow_delegation=False
@@ -36,7 +40,11 @@ ui_developer_cli = Agent(
 
 ui_developer_tkinter = Agent(
     role="Tkinter UI Developer",
-    goal="Develop a desktop GUI using Tkinter that meets the requirements for {app_description}.",
+    goal=(
+    "Develop a desktop GUI using Tkinter for {app_description} that handles only the UI. "
+    "The generated UI code must import the core business logic from 'skeleton_code' (e.g., 'from skeleton_code import ...') "
+    "and should not contain any duplicate business logic."
+    ),
     backstory="Generate a Tkinter-based UI with proper layout and interactions.",
     verbose=True,
     allow_delegation=False
@@ -44,7 +52,11 @@ ui_developer_tkinter = Agent(
 
 ui_developer_streamlit = Agent(
     role="Streamlit UI Developer",
-    goal="Develop a web UI using Streamlit that meets the requirements for {app_description}.",
+    goal=(
+    "Develop a web UI using Streamlit that meets the requirements for {app_description}."
+    "The generated UI code must import the core business logic from 'skeleton_code' (e.g., 'from skeleton_code import ...') "
+    "and should not contain any duplicate business logic."
+    ),
     backstory="Generate Streamlit code for an interactive web app UI.",
     verbose=True,
     allow_delegation=False
